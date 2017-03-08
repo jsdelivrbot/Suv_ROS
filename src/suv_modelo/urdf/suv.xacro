@@ -44,7 +44,7 @@
       <xacro:SuvPos />
       <geometry>
         <mesh
-          filename="package://suv_modelo/meshes/suv.stl" />
+          filename="package://suv_modelo/meshes/Suv.stl" />
       </geometry>
       <material
         name="">
@@ -56,7 +56,7 @@
       <xacro:SuvPos />
       <geometry>
         <mesh
-          filename="package://suv_modelo/meshes/suv.stl" />
+          filename="package://suv_modelo/meshes/Suv.stl" />
       </geometry>
     </collision>
   </link>
