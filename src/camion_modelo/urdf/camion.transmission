@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot>
+ <transmission name="LWheel">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="RuedaTraseraLcont">
+       <hardwareInterface>VelocityJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor1">
+     </actuator>
+ </transmission>
+
+ <transmission name="RWheel">
+     <type>transmission_interface/SimpleTransmission</type>
+     <joint name="RuedaTraseraRcont">
+       <hardwareInterface>VelocityJointInterface</hardwareInterface>
+     </joint>
+     <actuator name="motor2">
+     </actuator>
+ </transmission>
+</robot>

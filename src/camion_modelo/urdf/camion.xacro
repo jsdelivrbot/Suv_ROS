@@ -1,0 +1,286 @@
+<?xml version="1.0"?>
+<robot name="Camion" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+	<xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+
+	<xacro:property name="pi" value="3.1415" />
+
+	<xacro:macro name="FwheelOrigin" params="reflect">
+		<origin xyz="${0.093*reflect} 0.14007 0" rpy="1.5708 1.5708 0" />
+	</xacro:macro>
+	
+	<xacro:macro name="RwheelOrigin" params="reflect">
+		<origin xyz="${0.093*reflect} -0.13993 0" rpy="1.5708 1.5708 0" />
+	</xacro:macro>
+	
+	<xacro:macro name="CamionPos" >
+		<origin xyz="0 0 0" rpy="${pi/2} 0 0" />
+	</xacro:macro>
+	
+	<xacro:macro name="WheelPos" params="reflect">
+		<origin xyz="0 0 0" rpy="0 0 ${pi*reflect}" />
+	</xacro:macro>
+
+   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+   <xacro:include filename="$(find camion_modelo)/urdf/camion.gazebo" />
+   <xacro:include filename="$(find camion_modelo)/urdf/camion.transmission" />
+	<link
+    name="Camion">
+    <inertial>
+      <origin
+        xyz="-5.51833308534499E-20 0.0917381622691609 -0.0226267146514348"
+        rpy="0 0 0" />
+      <mass
+        value="2.6877612153808" />
+      <inertia
+        ixx="0.436790444054137"
+        ixy="-1.04813578970004E-18"
+        ixz="-1.942977693978E-19"
+        iyy="0.478191815504205"
+        iyz="0.0322987009628972"
+        izz="0.163843738563173" />
+    </inertial>
+    <visual>
+      <xacro:CamionPos />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/Camion.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.811764705882353 1 0.741176470588235 1" />
+      </material>
+    </visual>
+    <collision>
+      <xacro:CamionPos />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/Camion.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="FrontL">
+    <inertial>
+      <origin
+        xyz="1.6653E-16 0.017 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.02564" />
+      <inertia
+        ixx="0.00019133"
+        ixy="4.3651E-36"
+        ixz="-3.0885E-37"
+        iyy="0.00033326"
+        iyz="2.0755E-36"
+        izz="0.00019133" />
+    </inertial>
+    <visual>
+      <xacro:WheelPos reflect="0" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/FrontL.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0078431 0 0.019608 1" />
+      </material>
+    </visual>
+    <collision>
+      <xacro:WheelPos reflect="0" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/FrontL.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RuedaDelanteraLcont"
+    type="continuous">
+    <xacro:RwheelOrigin reflect="1" />
+    <parent
+      link="Camion" />
+    <child
+      link="FrontL" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="FrontR">
+    <inertial>
+      <origin
+        xyz="1.6653E-16 0.017 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.02564" />
+      <inertia
+        ixx="0.00019133"
+        ixy="-4.3651E-36"
+        ixz="3.0885E-37"
+        iyy="0.00033326"
+        iyz="2.0755E-36"
+        izz="0.00019133" />
+    </inertial>
+    <visual>
+      <xacro:WheelPos reflect="1" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/FrontR.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0078431 0 0.019608 1" />
+      </material>
+    </visual>
+    <collision>
+      <xacro:WheelPos reflect="1" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/FrontR.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RuedaDelanteraRcont"
+    type="continuous">
+    <xacro:RwheelOrigin reflect="-1" />
+    <parent
+      link="Camion" />
+    <child
+      link="FrontR" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="RearL">
+    <inertial>
+      <origin
+        xyz="1.3878E-17 0.017 6.9389E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.02564" />
+      <inertia
+        ixx="0.00019133"
+        ixy="-1.047E-36"
+        ixz="4.0793E-39"
+        iyy="0.00033326"
+        iyz="4.5618E-37"
+        izz="0.00019133" />
+    </inertial>
+    <visual>
+      <xacro:WheelPos reflect="0" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/RearL.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0078431 0 0.019608 1" />
+      </material>
+    </visual>
+    <collision>
+      <xacro:WheelPos reflect="0" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/RearL.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RuedaTraseraLcont"
+    type="continuous">
+    <xacro:FwheelOrigin reflect="1" />
+    <parent
+      link="Camion" />
+    <child
+      link="RearL" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="RearR">
+    <inertial>
+      <origin
+        xyz="1.3878E-17 0.017 -6.9389E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.02564" />
+      <inertia
+        ixx="0.00019133"
+        ixy="1.071E-36"
+        ixz="-4.0793E-39"
+        iyy="0.00033326"
+        iyz="4.5618E-37"
+        izz="0.00019133" />
+    </inertial>
+    <visual>
+      <xacro:WheelPos reflect="1" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/RearR.stl" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.0078431 0 0.019608 1" />
+      </material>
+    </visual>
+    <collision><xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+      <xacro:WheelPos reflect="1" />
+      <geometry>
+        <mesh
+          filename="package://camion_modelo/meshes/RearR.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RuedaTraseraRcont"
+    type="continuous">
+    <xacro:FwheelOrigin reflect="-1" />
+    <parent
+      link="Camion" />
+    <child
+      link="RearR" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+
+<joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 -0.23 0.06" rpy="0 0 ${-1*pi/2}"/>
+    <parent link="Camion"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      </geometry>
+      <material name="red">
+	    <color rgba="0.9 0.1 0 1" />
+	  </material>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+</robot>
+
