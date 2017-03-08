@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="Camion" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<robot name="Suv" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
 	<xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
 
@@ -13,7 +13,7 @@
 		<origin xyz="${0.093*reflect} -0.13993 0" rpy="1.5708 1.5708 0" />
 	</xacro:macro>
 	
-	<xacro:macro name="CamionPos" >
+	<xacro:macro name="SuvPos" >
 		<origin xyz="0 0 0" rpy="${pi/2} 0 0" />
 	</xacro:macro>
 	
@@ -22,10 +22,10 @@
 	</xacro:macro>
 
    <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-   <xacro:include filename="$(find camion_modelo)/urdf/camion.gazebo" />
-   <xacro:include filename="$(find camion_modelo)/urdf/camion.transmission" />
+   <xacro:include filename="$(find suv_modelo)/urdf/suv.gazebo" />
+   <xacro:include filename="$(find suv_modelo)/urdf/suv.transmission" />
 	<link
-    name="Camion">
+    name="Suv">
     <inertial>
       <origin
         xyz="-5.51833308534499E-20 0.0917381622691609 -0.0226267146514348"
@@ -41,10 +41,10 @@
         izz="0.163843738563173" />
     </inertial>
     <visual>
-      <xacro:CamionPos />
+      <xacro:SuvPos />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/Camion.stl" />
+          filename="package://suv_modelo/meshes/suv.stl" />
       </geometry>
       <material
         name="">
@@ -53,10 +53,10 @@
       </material>
     </visual>
     <collision>
-      <xacro:CamionPos />
+      <xacro:SuvPos />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/Camion.stl" />
+          filename="package://suv_modelo/meshes/suv.stl" />
       </geometry>
     </collision>
   </link>
@@ -80,7 +80,7 @@
       <xacro:WheelPos reflect="0" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/FrontL.stl" />
+          filename="package://suv_modelo/meshes/FrontL.stl" />
       </geometry>
       <material
         name="">
@@ -92,7 +92,7 @@
       <xacro:WheelPos reflect="0" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/FrontL.stl" />
+          filename="package://suv_modelo/meshes/FrontL.stl" />
       </geometry>
     </collision>
   </link>
@@ -101,7 +101,7 @@
     type="continuous">
     <xacro:RwheelOrigin reflect="1" />
     <parent
-      link="Camion" />
+      link="Suv" />
     <child
       link="FrontL" />
     <axis
@@ -127,7 +127,7 @@
       <xacro:WheelPos reflect="1" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/FrontR.stl" />
+          filename="package://suv_modelo/meshes/FrontR.stl" />
       </geometry>
       <material
         name="">
@@ -139,7 +139,7 @@
       <xacro:WheelPos reflect="1" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/FrontR.stl" />
+          filename="package://suv_modelo/meshes/FrontR.stl" />
       </geometry>
     </collision>
   </link>
@@ -148,7 +148,7 @@
     type="continuous">
     <xacro:RwheelOrigin reflect="-1" />
     <parent
-      link="Camion" />
+      link="Suv" />
     <child
       link="FrontR" />
     <axis
@@ -174,7 +174,7 @@
       <xacro:WheelPos reflect="0" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/RearL.stl" />
+          filename="package://suv_modelo/meshes/RearL.stl" />
       </geometry>
       <material
         name="">
@@ -186,7 +186,7 @@
       <xacro:WheelPos reflect="0" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/RearL.stl" />
+          filename="package://suv_modelo/meshes/RearL.stl" />
       </geometry>
     </collision>
   </link>
@@ -195,7 +195,7 @@
     type="continuous">
     <xacro:FwheelOrigin reflect="1" />
     <parent
-      link="Camion" />
+      link="Suv" />
     <child
       link="RearL" />
     <axis
@@ -221,7 +221,7 @@
       <xacro:WheelPos reflect="1" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/RearR.stl" />
+          filename="package://suv_modelo/meshes/RearR.stl" />
       </geometry>
       <material
         name="">
@@ -233,7 +233,7 @@
       <xacro:WheelPos reflect="1" />
       <geometry>
         <mesh
-          filename="package://camion_modelo/meshes/RearR.stl" />
+          filename="package://suv_modelo/meshes/RearR.stl" />
       </geometry>
     </collision>
   </link>
@@ -242,7 +242,7 @@
     type="continuous">
     <xacro:FwheelOrigin reflect="-1" />
     <parent
-      link="Camion" />
+      link="Suv" />
     <child
       link="RearR" />
     <axis
@@ -252,7 +252,7 @@
 <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 -0.23 0.06" rpy="0 0 ${-1*pi/2}"/>
-    <parent link="Camion"/>
+    <parent link="Suv"/>
     <child link="camera_link"/>
   </joint>
 

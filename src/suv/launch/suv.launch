@@ -1,0 +1,8 @@
+<launch>
+
+ <include file="$(find suv_modelo)/launch/gazebo.launch"/>
+
+ <include file="$(find suv_control)/launch/suv_control.launch"/>
+
+
+</launch>

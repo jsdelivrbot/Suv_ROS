@@ -54,7 +54,7 @@ Visualization Manager:
       Enabled: true
       Links:
         All Links Enabled: true
-        Camion:
+        Suv:
           Alpha: 1
           Show Axes: false
           Show Trail: false

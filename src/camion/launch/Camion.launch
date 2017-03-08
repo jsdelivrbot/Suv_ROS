@@ -1,8 +1,0 @@
-<launch>
-
- <include file="$(find camion_modelo)/launch/gazebo.launch"/>
-
- <include file="$(find camion_control)/launch/camion_control.launch"/>
-
-
-</launch>

@@ -1,11 +1,11 @@
 <launch>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find camion_control)/config/camion_control.yaml" command="load"/>
+  <rosparam file="$(find suv_control)/config/suv_control.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/Camion" args="mobile_base_controller joint_state_controller"/>
+    output="screen" ns="/suv" args="mobile_base_controller joint_state_controller"/>
 
 
 
