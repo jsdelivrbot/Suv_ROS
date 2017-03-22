@@ -1,0 +1,17 @@
+<launch>
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="suv_joy">
+    <remap from="joy" to="suv/joy"/>
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.12" />
+    <param name="autorepeat_rate" value="2" />
+    <param name="coalesce_interval" value="0.002" />
+  </node>
+
+ <!-- mapper -->
+  <node pkg="suv_joy" type="suv_joy_node.py" name="teleop" ns="suv">
+    <rosparam command="load" file="$(find suv_joy)/joy.yaml"/>
+  </node>
+</launch>
